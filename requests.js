@@ -1,4 +1,12 @@
-//GET request
+const sendRequest = (method, url, data) => {
+ var xhr = new XMLHttpRequest;
+	
+ xhr.responseType = 'json';
+ if (data) {data = JSON.stringify(data)}}
+	
+	
+
+
 			getWords = () => {
 				console.log("getting words")
 				const xhr = new XMLHttpRequest();
