@@ -18,7 +18,7 @@ const sendRequest = (method, url, data) => {
 	};
 
 
-getWords = () => {
+const getWords = () => {
 	console.log("getting words")		
 	const query = document.getElementById("input").value;
 	const endpoint = 'https://api.datamuse.com/words?sp=*' + query + '*';
