@@ -1,29 +1,22 @@
 const sendRequest = (method, url, data) => {
-	const promise = new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open(method, url);
+	const xhr = new XMLHttpRequest();
+	xhr.open(method, url);
 		
-		xhr.responseType = 'json';
+	xhr.responseType = 'json';
 		
-		if (data) {
-			xhr.setRequestHeader('Content-Type','application/json');
+	if (data) {
+		xhr.setRequestHeader('Content-Type','application/json');
+	}
+		
+	xhr.onreadystatechange = () => {
+		if(xhr.readyState === XMLHttpRequest.DONE) {
+			renderResponse(xhr.response);
 		}
+	}
 		
-		xhr.onreadystatechange = () => {
-			if(xhr.readyState === XMLHttpRequest.DONE) {
-				resolve(xhr.response);
-			} else {
-				reject(xhr.response);
-			}
-		}
-		xhr.onerror = () => {
-			reject('uhhh... idek');
-		}
-		
-		xhr.send(JSON.stringify(data));
-	});
-	return promise;
-};
+	xhr.send(JSON.stringify(data));
+	};
+
 
 getWords = () => {
 	console.log("getting words")		
