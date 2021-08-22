@@ -22,7 +22,7 @@ const getWords = () => {
 	console.log("getting words")		
 	const query = document.getElementById("input").value;
 	const endpoint = 'https://api.datamuse.com/words?sp=*' + query + '*';
-	fetch(endpoint).then(renderResponse());
+	fetch(endpoint).then(res => {return res.json()}).then(resData => {renderResponse(resData)});
 	//sendRequest('GET',endpoint);
 }
 
